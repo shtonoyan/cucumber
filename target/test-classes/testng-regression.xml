@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Home Task">
+    <test name="Simple Operations">
+        <classes>
+            <class name="test.GmailDraftTest"/>
+            <class name="test.GmailReplyTest"/>
+            <class name="test.GmailSendMailWithAttachmentTest"/>
+            <class name="test.GmailStarrMailsTest"/>
+            <class name="test.GmailDropToTrashBinTest"/>
+        </classes>
+    </test>
+
+</suite>
