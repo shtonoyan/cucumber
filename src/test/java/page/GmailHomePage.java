@@ -29,22 +29,15 @@ public class GmailHomePage extends BasePage {
         return this;
     }
 
-    public GmailHomePage fillLoginField(String login) {
+    public void fillLoginField(String login) {
         WebElement loginField = new WebDriverWait(this, TIMEOUT)
                 .until(ExpectedConditions
                         .presenceOfElementLocated(By.id("identifierId")));
 
         loginField.sendKeys(login);
-
-        WebElement nextBtn = new WebDriverWait(this, TIMEOUT)
-                .until(ExpectedConditions
-                        .elementToBeClickable(By.xpath("//span[@class='RveJvd snByac']")));
-        nextBtn.click();
-
-        return this;
     }
 
-    public GmailAccountPage fillPasswordField(String password) {
+    public void fillPasswordField(String password) {
 
         new WebDriverWait(this, TIMEOUT)
                 .until(ExpectedConditions
@@ -53,17 +46,13 @@ public class GmailHomePage extends BasePage {
                 .until(ExpectedConditions
                         .elementToBeClickable(By.xpath("//input[@type='password']")));
         passwordField.sendKeys(password);
+    }
 
+    public void clickNextBtn() {
         WebElement nextBtn = new WebDriverWait(this, TIMEOUT)
                 .until(ExpectedConditions
                         .elementToBeClickable(By.xpath("//span[@class='RveJvd snByac']")));
-
-        nextBtn = new WebDriverWait(this, TIMEOUT)
-                .until(ExpectedConditions
-                        .elementToBeClickable(By.xpath("//span[@class='RveJvd snByac']")));
         nextBtn.click();
-
-        return new GmailAccountPage(this);
     }
 
     public boolean isLogoutSuccessfull() {

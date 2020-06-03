@@ -1,6 +1,9 @@
 package page;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -145,7 +148,6 @@ public class GmailAccountPage extends BasePage {
                 .until(ExpectedConditions
                         .presenceOfElementLocated(By
                                 .xpath("//tr[.//*[contains(text(),'Draft')]]//td[@id]//span[contains(text(),'" + title + "')]")));
-
 
 
         WebElement draft = new WebDriverWait(this, TIMEOUT)
@@ -319,6 +321,27 @@ public class GmailAccountPage extends BasePage {
         new WebDriverWait(this, TIMEOUT).until(ExpectedConditions.elementToBeClickable(signOutBtn));
 
         return this;
+    }
+
+    public void clickParticularMenuItem(String title) {
+
+        WebElement menuItem = new WebDriverWait(this, TIMEOUT)
+                .until(ExpectedConditions
+                        .presenceOfElementLocated(By.xpath("//div[@class='aim']/descendant::*[@title='" + title + "']")));
+
+        menuItem.click();
+    }
+
+    public boolean isItemDisplayed(String title) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String[] currentUrl = this.getCurrentUrl().split("#");
+        String acualValue = currentUrl[1];
+        return acualValue.equals(title.toLowerCase());
+
     }
 
     public GmailHomePage logout() {
