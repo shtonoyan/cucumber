@@ -9,15 +9,15 @@ import page.BasePage;
 
 
 public class DriverHooks {
-    protected WebDriver driver;
+
 
     @Before
     public void setupDriver() {
-        driver = new BasePage(DriverSingleton.getDriver());
+        DriverSingleton.getDriver();
     }
 
     @After
     public void browserTearDown() {
-        driver.quit();
+        DriverSingleton.closeDriver();
     }
 }

@@ -4,12 +4,11 @@ import driver.DriverSingleton;
 import org.openqa.selenium.WebDriver;
 
 public class PageFactory {
-    private static WebDriver driver = DriverSingleton.getDriver();
 
     public static GmailAccountPage getGmailAccountPage(){
-        return new GmailAccountPage(driver);
+        return new GmailAccountPage(DriverSingleton.getDriver());
     }
     public static GmailHomePage getGmailHomePage(){
-        return new GmailHomePage(driver);
+        return new GmailHomePage(DriverSingleton.getDriver());
     }
 }
